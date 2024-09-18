@@ -6,6 +6,7 @@ class Employee::RegistrationsController < Devise::RegistrationsController
   private
 
   def respond_with(current_employee, _opts = {})
+  
     if resource.persisted?
       render json: {
         status: {code: 200, message: 'Signed up successfully.'},
@@ -13,7 +14,7 @@ class Employee::RegistrationsController < Devise::RegistrationsController
       }
     else
       render json: {
-        status: {message: "Employee couldn't be created successfully. #{current_empo.errors.full_messages.to_sentence}"}
+        status: {message: "Employee couldn't be created successfully. #{current_employee.errors.full_messages.to_sentence}"}
       }, status: :unprocessable_entity
     end
   end

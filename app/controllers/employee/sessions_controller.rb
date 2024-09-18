@@ -16,7 +16,7 @@ class Employee::SessionsController < Devise::SessionsController
       jwt_payload = JWT.decode(request.headers['Authorization'].split(' ').last, Rails.application.credentials.devise_jwt_secret_key!).first
       current_employee = Employee.find(jwt_payload['sub'])
     end
-    
+  
     if current_employee
       render json: {
         status: 200,
