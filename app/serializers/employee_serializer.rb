@@ -1,4 +1,4 @@
 class EmployeeSerializer
   include JSONAPI::Serializer
-  attributes :id, :email, :name
+  attributes :id, :email, :name, :department_id
 end

@@ -6,6 +6,7 @@ class Employee::RegistrationsController < Devise::RegistrationsController
   private
 
   def respond_with(current_employee, _opts = {})
+  byebug
   
     if resource.persisted?
       render json: {
@@ -19,3 +20,5 @@ class Employee::RegistrationsController < Devise::RegistrationsController
     end
   end
 end
+
+

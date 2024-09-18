@@ -10,9 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_17_093225) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_18_142809) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "departments", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "employees", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,9 +30,32 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_17_093225) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "jti", null: false
+    t.bigint "department_id"
+    t.index ["department_id"], name: "index_employees_on_department_id"
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["jti"], name: "index_employees_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
 
+  create_table "leaves", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.string "leave_type"
+    t.bigint "employee_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_leaves_on_employee_id"
+  end
+
+  create_table "salaries", force: :cascade do |t|
+    t.decimal "basic_salary"
+    t.bigint "employee_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_salaries_on_employee_id"
+  end
+
+  add_foreign_key "employees", "departments"
+  add_foreign_key "leaves", "employees"
+  add_foreign_key "salaries", "employees"
 end
