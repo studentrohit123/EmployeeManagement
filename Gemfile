@@ -39,6 +39,11 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
   gem 'byebug'
+  gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
 end
 
 group :development do
@@ -57,3 +62,7 @@ gem 'devise'
 gem 'devise-jwt'
 
 gem 'jsonapi-serializer'
+
+gem 'rspec-support', '~> 3.9.4'
+
+gem "simplecov", '0.17.0'

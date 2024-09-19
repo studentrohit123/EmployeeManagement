@@ -1,4 +1,4 @@
-class LeavesComtroller < ApplicationController
+class LeavesController < ApplicationController
 
   before_action :get_leave, only: [:show, :update, :destroy]
 
