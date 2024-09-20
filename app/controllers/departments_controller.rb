@@ -7,10 +7,10 @@ class DepartmentsController < ApplicationController
     render json: department, status: 200
   end
 
-  def new 
-    department = Department.new
-    render json: department, status: 200
-  end 
+  # def new 
+  #   department = Department.new
+  #   render json: department, status: 200
+  # end 
 
   def create
     department = Department.new(department_params)

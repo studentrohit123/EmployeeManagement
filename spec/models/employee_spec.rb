@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Employee, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-  it { should belongs_to(:department) }
+  describe 'associations' do
+    it { should belong_to(:department) }
+    it { should have_one(:salary) }
+    # it { should have_many(:leaves) }
+  end
 end
