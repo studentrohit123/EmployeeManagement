@@ -8,4 +8,8 @@ Rails.application.routes.draw do
     sessions: 'employee/sessions',
     registrations: 'employee/registrations'
   }
+
+  resources :departments
+  resources :salaries
+  resources :leaves
 end
